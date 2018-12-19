@@ -72,12 +72,15 @@ def view_classify(img, ps, version="MNIST"):
     fig, (ax1, ax2) = plt.subplots(figsize=(6,9), ncols=2)
     ax1.imshow(img.resize_(1, 28, 28).numpy().squeeze())
     ax1.axis('off')
-    ax2.barh(np.arange(10), ps)
-    ax2.set_aspect(0.1)
-    ax2.set_yticks(np.arange(10))
     if version == "MNIST":
+        ax2.barh(np.arange(10), ps)
+        ax2.set_aspect(0.1)
+        ax2.set_yticks(np.arange(10))
         ax2.set_yticklabels(np.arange(10))
     elif version == "Fashion":
+        ax2.barh(np.arange(10), ps)
+        ax2.set_aspect(0.1)
+        ax2.set_yticks(np.arange(10))
         ax2.set_yticklabels(['T-shirt/top',
                             'Trouser',
                             'Pullover',
@@ -87,7 +90,12 @@ def view_classify(img, ps, version="MNIST"):
                             'Shirt',
                             'Sneaker',
                             'Bag',
-                            'Ankle Boot'], size='small');
+                            'Ankle Boot'], size='small')
+    elif version == "cats_dogs":
+        ax2.barh(np.arange(2), ps)
+        ax2.set_aspect(0.1)
+        ax2.set_yticks(np.arange(2))
+        ax2.set_yticklabels(['cat', 'dog'])
     ax2.set_title('Class Probability')
     ax2.set_xlim(0, 1.1)
 
